@@ -39,3 +39,6 @@ cd ~/ros2_ws
 colcon build --symlink-install
 source install/setup.bash
 ```
+
+### Start BFFP Demo Factory
+After building and sourcing the workspace, use: `ros2 launch bffp_gazebo factory_moveit_full.launch.py` to launch the demo. This launches a Gazebo simulation and a HC10DTP with full MoveIt2 support. Rviz2 is also launched to visualize ROS2 topics.
