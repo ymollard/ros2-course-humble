@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="motoman_hc10dtp">
+    <!-- Set default args -->
+    <xacro:arg name="initial_positions_file" default="$(find hc10dtp)/config/initial_positions.yaml" />
+    <xacro:arg name="joint_names_file" default="$(find hc10dtp)/config/controller_joint_names.yaml" />
+
+    <!-- Import robot_description -->
+    <xacro:include filename="$(find hc10dtp)/urdf/description.urdf.xacro" />
+
+    <!-- Import macros -->
+    <xacro:include filename="$(find cboost_macros)/xacro/ros2_control.xacro" />
+    <xacro:include filename="$(find cboost_macros)/xacro/default_transmission.xacro"/>
+
+    <xacro:all_default_transmission joint_names_file="$(arg joint_names_file)"/>
+    <joint name="eef_joint" type="fixed">
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <parent link="tool0" />
+        <child link="eef_link" />
+    </joint>
+</robot>

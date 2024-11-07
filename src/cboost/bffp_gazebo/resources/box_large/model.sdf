@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+
+<sdf version='1.7'>
+  <model name='box_large'>
+    <link name='box_base'>
+      <gravity>1</gravity>
+      <inertial>
+        <mass>1.06</mass>
+        <inertia>
+            <ixx>0.01</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>0.01</iyy>
+            <iyz>0</iyz>
+            <izz>0.01</izz>
+        </inertia>
+        <pose>0 0 0.1 0 0 0</pose>
+      </inertial>
+      <visual name="visual">
+        <geometry>
+          <mesh>
+            <scale>0.01 0.01 0.01</scale>
+            <uri>model://box_large/meshes/box_large.dae</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.60 0.0 0.0 1</ambient>
+          <diffuse>0.60 0.0 0.0 1</diffuse>
+          <specular>0.8 0.8 0.8 1</specular>
+        </material>
+      </visual>
+      <collision name="collider">
+        <geometry>
+          <mesh>
+            <scale>0.01 0.01 0.01</scale>
+            <uri>model://box_large/meshes/box_large.dae</uri>
+          </mesh>
+        </geometry>
+      </collision>
+    </link>
+  </model>
+</sdf>

@@ -1,0 +1,3 @@
+src/*
+!src/motoman
+!src/cboost

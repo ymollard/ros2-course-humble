@@ -1,0 +1,25 @@
+moveit_setup_assistant_config:
+  urdf:
+    package: hc10dtp
+    relative_path: urdf/hc10dtp_description.urdf.xacro
+  srdf:
+    relative_path: config/motoman_hc10dtp.srdf
+  package_settings:
+    author_name: Patrick Verwimp
+    author_email: patrick.verwimp@cboost.nl
+    generated_timestamp: 1726823302
+  control_xacro:
+    command:
+      - position
+    state:
+      - position
+      - velocity
+  modified_urdf:
+    xacros:
+      - control_xacro
+  control_xacro:
+    command:
+      - position
+    state:
+      - position
+      - velocity

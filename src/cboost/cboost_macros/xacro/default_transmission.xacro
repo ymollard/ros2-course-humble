@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<!-- 
+Macro for Simple transmission 
+-->
+<robot xmlns:xacro="http://ros.org/wiki/xacro">
+	<xacro:macro name="default_transmission" params="joint_name">
+		<transmission name="transmission_${joint_name}">
+			<type>transmission_interface/SimpleTransmission</type>
+			<actuator name="actuator_${joint_name}" role="actuator_${joint_name}">
+				<mechanicalReduction>1.0</mechanicalReduction>
+				<hardwareInterface>EffortJointInterface</hardwareInterface>
+			</actuator>
+			<joint name="${joint_name}">
+				<hardwareInterface>EffortJointInterface</hardwareInterface>
+			</joint>
+		</transmission>
+	</xacro:macro>
+
+	<!-- Loops trough all joints and adds default transmission -->
+	<xacro:macro name="all_default_transmission" params="joint_names_file">
+		<xacro:property name="joint_names" value="${xacro.load_yaml(joint_names_file)['controller_joint_names']}"/>
+
+		<xacro:macro name="add_transmission_loop" params="items:=^">
+			<xacro:if value="${items}">
+				<!-- pop first item from list -->
+			  	<xacro:property name="item" value="${items.pop(0)}"/>
+				<xacro:default_transmission joint_name="${item}"/>
+				<!-- recursively call myself -->
+				<xacro:add_transmission_loop/>
+			</xacro:if>
+		</xacro:macro>
+
+		<xacro:add_transmission_loop items="${joint_names}"/>
+	</xacro:macro>
+</robot>

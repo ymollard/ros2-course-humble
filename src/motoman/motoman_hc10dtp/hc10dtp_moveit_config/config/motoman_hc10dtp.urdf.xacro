@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="motoman_hc10dtp">
+    <xacro:arg name="initial_positions_file" default="initial_positions.yaml" />
+
+    <!-- Import motoman_hc10dtp urdf file -->
+    <xacro:include filename="$(find hc10dtp)/urdf/hc10dtp.urdf.xacro" />
+
+    <xacro:ros2_control name="FakeSystem" 
+    initial_positions_file="$(arg initial_positions_file)" 
+    joint_names_file="$(arg joint_names_file)"
+    hardware_plugin="mock_components/GenericSystem"/>
+</robot>

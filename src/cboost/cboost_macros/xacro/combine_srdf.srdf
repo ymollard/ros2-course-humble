@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--This does not replace URDF, and is not an extension of URDF.
+    This is a format for representing semantic information about the robot structure.
+    A URDF file must exist for this robot as well, where the joints and the links that are referenced are defined
+-->
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="generated_robot">
+    <xacro:arg name="prefix" default="" />
+    <xacro:arg name="moveit_package_share" default="" />
+    <xacro:arg name="tool_package_share" default="" />
+    <xacro:arg name="robot_srdf_file" default="$(arg moveit_package_share)/config/description.srdf" />
+    <xacro:arg name="tool_srdf_file" default="$(arg tool_package_share)/config/tool.srdf" />
+    
+    <!-- Import SRDFs -->
+    <xacro:include filename="$(arg robot_srdf_file)"/>
+    <xacro:include filename="$(arg tool_srdf_file)"/>
+
+    <xacro:add_tool prefix="$(arg prefix)" connected_to="tool0"/>
+</robot>
