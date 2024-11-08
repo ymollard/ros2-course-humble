@@ -3,7 +3,7 @@
 <package format="3">
   <name>bffp_gazebo</name>
   <version>0.0.3</version>
-  <description>ROS2 package for Yaskawa's HC10DTP model</description>
+  <description>ROS2 package for BFFP gazebo sim world</description>
   <maintainer email="patrick.verwimp@cboost.nl">Patrick Verwimp</maintainer>
   <license>BSD-3-Clause</license>
 
