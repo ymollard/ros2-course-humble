@@ -1,5 +1,5 @@
 {
-    "name": "ROS2 Course Workspace",
+    "name": "ROS2 Course Workspace Humble",
     "remoteUser": "rosdev",
     "build": {
         "dockerfile": "${localWorkspaceFolder}/docker/Dockerfile",
