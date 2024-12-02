@@ -14,19 +14,6 @@ This script sets the right configuration to user containers at CREMI and starts 
 
 When VSCode opens, trust the sources and **accept the installation of the Dev Container extension**.
 
-## Installing in Container
-The `~/ros2_ws/src` directory in the container is bound to the `src` directory in this repository. Which means source installs are persistent and saved when stopping and/or rebuilding the DevContainer.
-The opposite is true for binary installs, these are not persistent. Unless added to the Dockerfile. 
-
-ROS2 packages should be installed/cloned into the `~/ros2_ws/src` folder. 
-To install the dependencies for these packages use:
-``` bash
-cd ~/ros2_ws
-sudo apt update
-rosdep update
-rosdep install --from-paths src --ignore-src -y -r
-```
-
 ## Start Tiago 2D navigation
 To build the workspace use:
 ``` bash
@@ -61,3 +48,15 @@ ros2 launch tiago_2dnav tiago_nav_bringup.launch.py is_public_sim:=True world_na
 - Estimate the 2D pose
 - Send a 2D nav goal
 
+## Optional, if needed: Install new packages in Container
+The `~/ros2_ws/src` directory in the container is bound to the `src` directory in this repository. Which means source installs are persistent and saved when stopping and/or rebuilding the DevContainer.
+The opposite is true for binary installs, these are not persistent. Unless added to the Dockerfile. 
+
+ROS2 packages should be installed/cloned into the `~/ros2_ws/src` folder. 
+To install the dependencies for these packages use:
+``` bash
+cd ~/ros2_ws
+sudo apt update
+rosdep update
+rosdep install --from-paths src --ignore-src -y -r
+```

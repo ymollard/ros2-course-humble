@@ -20,4 +20,7 @@ else
   echo "File $CONFIG_FILE already exists."
 fi
 
-code .
+echo "Now starting VSCode..."
+echo "Accept the 'Dev Containers' extension by clicking Install at bottom right, and then 'Reopen in Container'"
+echo "..."
+code "$(dirname "$(realpath "$0")")"
