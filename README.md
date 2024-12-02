@@ -1,35 +1,18 @@
-# ros2-course
+# ros2-course for CREMI
 DevContainer setup for ROS2 course
-
 
 ## Prerequisites
 
-### Linux
-Install the following:
-- Docker Engine
-- VS Code
-- VS Code extension: Dev Containers
-
-Follow the listed steps to finish setup:
-1. Create a json file in the `.devcontainer` dir named `devcontainer.json` and copy the content of `devcontainer - linux.json` into it. 
-
-### Windows
-Install the following:
-- Docker Engine
-- VS Code
-- VS Code extension: Dev Containers
-- XLaunch or other Xserver
-
-Follow the listed steps to finish setup:
-1. Create a json file in the `.devcontainer` dir named `devcontainer.json` and copy the content of `devcontainer - windows.json` into it. 
-2. Start a Xserver with 0.0 as DISPLAY port
+This is a Dev container of **ROS 2 Humble + PAL Tiago robot** for Visual Studio Code for CREMI @Bordeaux University.
 
 ## Start DevContainer
-1. Open this repository in VS Code.
-2. `crtl + shift + P` to open command prompt
-3. Enter `Dev Containers: Rebuild and Reopen in Container` 
+```bash
+git clone https://github.com/ymollard/ros2-course-humble -b cremi
+./ros2-course-humble/start_ros_humble.bash
+```
+This script sets the right configuration to user containers at CREMI and starts the container in Visual Studio Code.
 
-VS Code will start the Dev Container building the Dockerfile found in the `/docker` dir. This is a basic ROS2 Humble Container + PAL Tiago binaries. 
+When VSCode opens, trust the sources and **accept the installation of the Dev Container extension**.
 
 ## Installing in Container
 The `~/ros2_ws/src` directory in the container is bound to the `src` directory in this repository. Which means source installs are persistent and saved when stopping and/or rebuilding the DevContainer.
@@ -43,7 +26,8 @@ sudo apt update
 rosdep update
 rosdep install --from-paths src --ignore-src -y -r
 ```
-This should install all package dependencies referenced in the `package.xml` files.
+
+## Start Tiago 2D navigation
 To build the workspace use:
 ``` bash
 cd ~/ros2_ws
@@ -51,17 +35,7 @@ colcon build --symlink-install
 source install/setup.bash
 ```
 
-## Start BFFP Demo Factory
-After installing the rosdeps and building and sourcing the workspace (see [Installing in Container](#installing-in-container)), use: `ros2 launch bffp_gazebo factory_moveit_full.launch.py` to launch the demo. This launches a Gazebo simulation and a HC10DTP with full MoveIt2 support. Rviz2 is also launched to visualize ROS2 topics.
-
-``` bash
-cd ~/ros2_ws
-colcon build --symlink-install
-source install/setup.bash
-```
-
-## Start Tiago 2D navigation
-Start Gazebo simulation of Tiago:
+Start Gazebo simulation of Tiago robot:
 ``` bash
 ros2 launch tiago_gazebo tiago_gazebo.launch.py is_public_sim:=True
 ```
